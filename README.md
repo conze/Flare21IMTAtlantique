@@ -1,5 +1,6 @@
 # Flare21IMTAtlantique
 submission of IMT Atlantique for FLARE21 challenge
+
 author: Pierre-Henri Conze | IMT Atlantique, LaTIM UMR 1101, Inserm
 
 ## training 

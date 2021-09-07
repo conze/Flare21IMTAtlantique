@@ -1,1 +1,1 @@
-# put weights in this folder!
+put weights in this folder!
