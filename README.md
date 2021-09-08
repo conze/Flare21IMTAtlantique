@@ -16,7 +16,7 @@ for training, note that ```input_folder``` should contain both ```TrainingImg/``
 sudo docker build -t imt_atlantique .
 ```
 ```python
-sudo docker save -o imt_atlantique.tar.gz imt-atlantique
+sudo docker save -o imt_atlantique.tar.gz imt_atlantique
 ```
 
 ## inference on test FLARE21 data
