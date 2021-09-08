@@ -12,7 +12,7 @@ import tqdm
 from utils import utils
 import random
 
-def create_flare21_dataset(output, ids, scheme, size, anatomy):
+def create_flare21_dataset(root, output, ids, scheme, size, anatomy):
     ''' create flare21 dataset with scheme={train,val} and anatomy={all, liver, kidneys, spleen, pancreas} '''
     
     list_id = []
@@ -20,7 +20,7 @@ def create_flare21_dataset(output, ids, scheme, size, anatomy):
     distutils.dir_util.mkpath(folder)
     
     for idx, id_ in enumerate(tqdm.tqdm(ids)):
-        exam = exam_flare21(id_, 'train', anatomy)
+        exam = exam_flare21(root, id_, 'train', anatomy)
         exam.normalize()  
         for xyz in range(exam.CT.shape[2]): 
             img, mask = extract_flare21_slice(exam, xyz, size, anatomy)

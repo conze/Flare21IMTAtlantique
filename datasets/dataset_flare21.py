@@ -54,7 +54,7 @@ class tiny_dataset_flare21(Dataset):
         self.size = size
         self.anatomy = anatomy
         self.vgg = vgg
-        self.exam = exam_flare21(self.id, 'test', self.anatomy, upload=True)
+        self.exam = exam_flare21('./inputs/', self.id, 'test', self.anatomy, upload=True)
         self.exam.normalize()
             
     def __len__(self):

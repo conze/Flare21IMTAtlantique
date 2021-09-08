@@ -8,7 +8,7 @@ import numpy as np
 
 class exam_flare21:
 
-    def __init__(self, id_, scheme:str, anatomy, upload=True):
+    def __init__(self, root, id_, scheme:str, anatomy, upload=True):
         
         self.root = './inputs/'
         self.scheme = scheme

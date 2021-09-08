@@ -17,7 +17,8 @@ import distutils.dir_util
 from nets.whichnet import whichnet
 from utils.train_utils import launch_training, dice_history, cross_entropy_history
 
-def train_flare21(net_id, 
+def train_flare21(root,
+                  net_id, 
                   net,
                   anatomy,
                   output,
@@ -35,10 +36,10 @@ def train_flare21(net_id,
     logging.info(f'''validation ids: {val_ids}''')
                  
     if os.path.isfile(output+'imgs-id-train.npy') == False:
-        create_flare21_dataset(output, train_ids, 'train', size, anatomy)
+        create_flare21_dataset(root, output, train_ids, 'train', size, anatomy)
     
     if os.path.isfile(output+'imgs-id-val.npy') == False:
-        create_flare21_dataset(output, val_ids, 'val', size, anatomy)
+        create_flare21_dataset(root, output, val_ids, 'val', size, anatomy)
     
     train_dataset = dataset_flare21(output, 'train', anatomy, vgg)
 
@@ -72,8 +73,10 @@ def train_flare21(net_id,
 def get_args():
     
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    
+    parser.add_argument('-i', '--input', type=str, dest='input')
 
-    parser.add_argument('-o', '--output', type=str, default='./../../results/flare21/', dest='output')
+    parser.add_argument('-o', '--output', type=str, dest='output')
     
     parser.add_argument('-a', '--anatomy', type=str, default='all', dest='anatomy') # liver, kidneys, spleen, pancreas or all
     
@@ -118,7 +121,8 @@ if __name__ == '__main__':
 
         distutils.dir_util.mkpath(args.output)
 
-        train_metric, val_metric = train_flare21(net_id = args.network, 
+        train_metric, val_metric = train_flare21(root = args.input,
+                                                 net_id = args.network, 
                                                  net = net,
                                                  anatomy = args.anatomy,
                                                  output = args.output,
