@@ -5,8 +5,16 @@ import torch
 import torch.nn as nn
 from torch.nn import functional
 
+class SingleConv(nn.Module):
+    
+    def __init__(self, in_chan, out_chan):
+        super().__init__()
+        self.single_conv = nn.Conv2d(in_chan, out_chan, kernel_size=3, padding=1)
+        
+    def forward(self, x):
+        return self.single_conv(x)
+
 class SimpleConv(nn.Module):
-    ''' {Conv2d, BN, ReLU} '''
     
     def __init__(self, in_chan, out_chan):
         super().__init__()
@@ -19,7 +27,6 @@ class SimpleConv(nn.Module):
         return self.simple_conv(x)
     
 class DoubleConv(nn.Module):
-    ''' {Conv2d, BN, ReLU}x2 '''
     
     def __init__(self, in_chan, out_chan):
         super().__init__()
@@ -35,7 +42,6 @@ class DoubleConv(nn.Module):
         return self.double_conv(x)
     
 class DoubleUp(nn.Module):
-    ''' ConvTranspose2d + {Conv2d, BN, ReLU}x2 '''
     
     def __init__(self, in_chan, out_chan, mid_chan=None):
         super().__init__()
@@ -50,6 +56,5 @@ class DoubleUp(nn.Module):
         return self.conv(x)
     
 def up_sample2d(x, t, mode="bilinear"):
-    ''' 2D up-sampling '''
     
     return functional.interpolate(x, t.size()[2:], mode=mode, align_corners=False)
