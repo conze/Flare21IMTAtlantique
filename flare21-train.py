@@ -79,13 +79,13 @@ def get_args():
     
     parser.add_argument('-e', '--epochs', type=int, default=100, dest='epochs')
     
-    parser.add_argument('-b', '--batch', type=int, default=16, dest='batch')
+    parser.add_argument('-b', '--batch', type=int, default=4, dest='batch')
     
     parser.add_argument('-l', '--learning', type=int, default=10, dest='lr')
     
-    parser.add_argument('-n', '--network', type=int, default=8, dest='network')
+    parser.add_argument('-n', '--network', type=int, default=1, dest='network')
     
-    parser.add_argument('-s', '--size', type=int, default=256, dest='size')
+    parser.add_argument('-s', '--size', type=int, default=512, dest='size')
     
     return parser.parse_args()
 
