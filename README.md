@@ -8,7 +8,7 @@ author: Pierre-Henri Conze | IMT Atlantique, LaTIM UMR 1101, Inserm
 python3 flare21-train.py -i input_folder -o output_folder
 ```
 
-note that 'input_folder' for training should contain both 'TrainingImg/' and 'TrainingMask/' folders
+for training, note that ```python input_folder``` should contain both ```python TrainingImg/``` and ```python TrainingMask/``` folders
 
 ## docker creation 
 - copy epoch.pth in the weights folder
