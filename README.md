@@ -21,7 +21,7 @@ sudo docker save -o imt_atlantique.tar.gz imt_atlantique
 
 ## inference on test FLARE21 data
 ```python
-docker image load < imt_atlantique.tar.gz
+sudo docker image load < imt_atlantique.tar.gz
 - docker container run --gpus "device=0" --name imt_atlantique --rm \
 -v $PWD/inputs/:/workspace/inputs/ \
 -v $PWD/TeamName_outputs/:/workspace/outputs/ \ 
