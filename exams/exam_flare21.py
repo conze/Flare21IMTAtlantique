@@ -10,7 +10,7 @@ class exam_flare21:
 
     def __init__(self, root, id_, scheme:str, anatomy, upload=True):
         
-        self.root = './inputs/'
+        self.root = root
         self.scheme = scheme
         if self.scheme == 'train':
             self.folder_src = self.root + 'TrainingImg/'
